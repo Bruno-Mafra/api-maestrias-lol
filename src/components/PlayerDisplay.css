@@ -1,0 +1,42 @@
+.PDContainer {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+  margin-top: 25px;
+  max-width: 30%;
+
+  background-color: rgb(156, 121, 25);
+  border: 2px solid white;
+  border-radius: 5px;
+  
+}
+
+@media (max-width: 600px) {
+  .PDContainer {
+      max-width: 98% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .PDContainer {
+      max-width: 55%;
+  }
+}
+
+.PDImg {
+  max-width: 50%;
+}
+
+.PDImgContainer {
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+
+}
+
+.Info {
+  color: black;
+  align-self: center;
+  text-align: center;
+}
