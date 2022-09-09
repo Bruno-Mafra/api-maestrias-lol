@@ -74,7 +74,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>PLAYER MAESTRY LEVEL</h1>
+      <h1>PLAYER MAESTRY LEVELLLLLLLLLL</h1>
       <BuscarPlayer setNickname={setPlayerNickname} />
       <span className={notFound ? undefined : 'NotFound'}>Esse nome de invocador não foi encontrado!</span>
       {loading ? <Loading/> :
