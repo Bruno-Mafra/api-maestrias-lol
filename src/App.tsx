@@ -37,12 +37,12 @@ function App() {
       setPlayerInfo(data)
       setNotFound(false)
     } catch (e) {
-      setPlayerInfo({id: "", name: '', summonerLevel: 0, profileIconId: 0})
-      setAllMasteries([])
-      setLoading(false)
-      console.error(e)
-      setNotFound(true)
-    }
+        setPlayerInfo({id: "", name: '', summonerLevel: 0, profileIconId: 0})
+        setAllMasteries([])
+        setLoading(false)
+        console.error(e)
+        setNotFound(true)
+      }
   }
 
   const getAllMasteries = async () => {
@@ -53,15 +53,15 @@ function App() {
       setLoading(false)
       setNotFound(false)
     } catch (e) {
-      setLoading(false)
-      setNotFound(true)
-      console.error(e)
-    }
+        setLoading(false)
+        setNotFound(true)
+        console.error(e)
+      }
   }
   
   useEffect(() => {
     if (playerInfo.id) {
-    getAllMasteries()
+      getAllMasteries()
     }
   }, [playerInfo])
 
@@ -100,7 +100,6 @@ function App() {
           }
         </div>
       }
-
     </div>
   )
 };
