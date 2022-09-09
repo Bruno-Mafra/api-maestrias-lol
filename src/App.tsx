@@ -7,7 +7,7 @@ import Card from './components/Card'
 
 import './App.css'
 
-const apiKey = 'RGAPI-bd70ef96-3206-4c91-be77-87105ce31a71'
+const apiKey = 'RGAPI-a4b38029-1eb5-482f-a783-eb9048ba91ab'
 const lolLink = 'https://br1.api.riotgames.com/lol/'
 
 type allMasteriesProps = {
