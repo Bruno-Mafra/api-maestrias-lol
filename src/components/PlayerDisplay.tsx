@@ -7,7 +7,7 @@ type PlayerDisplayProps = {
   summonerIconId: number;
 }
 
-const iconLink = 'http://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/'
+const iconLink = 'https://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/'
 
 const PlayerDisplay: React.FC<PlayerDisplayProps> = ({ summonerName, summonerLevel, summonerIconId }) => {
   return (
