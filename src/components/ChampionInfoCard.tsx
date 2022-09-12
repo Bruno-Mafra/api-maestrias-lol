@@ -8,14 +8,15 @@ type ChampionInfoCardProps = {
 }
 
 interface championInfoProps {
-  key: number;
   name: string; 
   id: string;
+  title: string;
+  blurb: string;
 }
 
 const ChampionInfoCard: React.FC<ChampionInfoCardProps> = ({championsInfo}) => {
 
-  const [championInfo, setChampionInfo] = useState<championInfoProps>({key: 0, name: '', id: ''})
+  const [championInfo, setChampionInfo] = useState<championInfoProps>({name: '', id: '', title: '', blurb: ''})
 
   const params = useParams()
 
