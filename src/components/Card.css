@@ -13,6 +13,8 @@
     margin: 25px auto;
 
     color: black;
+
+    position:relative; 
 }
 
 @media (max-width: 600px) {
@@ -49,4 +51,14 @@ img {
     background-color: rgb(156, 121, 25);
     border-bottom: 2px solid white;
     margin: 0px;
+}
+
+.link {
+    position:absolute; 
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+  
+    z-index: 1;  
 }

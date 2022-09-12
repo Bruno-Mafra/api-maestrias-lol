@@ -1,5 +1,9 @@
+import React from 'react'
 import { useEffect, useState } from 'react'
 
+import { BrowserRouter as Router, Routes as Switch, Route} from 'react-router-dom'
+
+import ChampionInfoCard from './components/ChampionInfoCard'
 import BuscarPlayer from './components/BuscarPlayer'
 import PlayerDisplay from './components/PlayerDisplay'
 import Loading from './components/Loading'
@@ -24,15 +28,15 @@ type allMasteriesProps = {
   championPoints: number
 }
 
-interface championInfoProps {
+interface championsInfoProps {
   key: number;
   name: string; 
-  id: number;
+  id: string;
 }
 
 function App() {
   const [allMasteries, setAllMasteries] = useState<allMasteriesProps[]>([])
-  const [championInfo, setChampionInfo] = useState<championInfoProps[]>([])
+  const [championsInfo, setChampionsInfo] = useState<championsInfoProps[]>([])
   const [playerInfo, setPlayerInfo] = useState<playerInfoProps>({id: "", name: "", summonerLevel: 0, profileIconId: 0})
   const [playerNickname, setPlayerNickname] = useState<string>()
   const [notFound, setNotFound] = useState<boolean>(false)
@@ -70,7 +74,7 @@ function App() {
   const getChampionInfo = async () => {
     const res = await fetch(`${championInfoLink}`)
     const data = await res.json()
-    setChampionInfo(Object.values(data.data))
+    setChampionsInfo(Object.values(data.data))
   }
 
   useEffect(() => {
@@ -91,35 +95,45 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <h1>PLAYER MAESTRY LEVEL</h1>
-      <BuscarPlayer setNickname={setPlayerNickname} />
-      <span className={notFound ? undefined : 'NotFound'}>Esse nome de invocador não foi encontrado!</span>
-      {loading ? <Loading/> :
-        <div>
-          {playerInfo.id &&
-            <div>
-              <h2>SUMMONER'S INFO</h2> 
-              <PlayerDisplay
-                summonerName={playerInfo.name}
-                summonerLevel={playerInfo.summonerLevel}
-                summonerIconId={playerInfo.profileIconId} />
-              <h2>MAESTRY RANK</h2>
-              <div className="CardTable">
-                {allMasteries.map((mastery, i) =>
-                  <Card
-                    key={i}
-                    championInfo={championInfo}
-                    idChampion={mastery.championId}
-                    maestryLevel={mastery.championLevel}
-                    championPoints={mastery.championPoints} />)
-                }
-              </div>
+    <Router>
+      <Switch>
+        <Route
+          element={
+            <div className="Home">
+              <h1>PLAYER MAESTRY LEVEL</h1>
+              <BuscarPlayer setNickname={setPlayerNickname} />
+              <span className={notFound ? undefined : 'NotFound'}>Esse nome de invocador não foi encontrado!</span>
+              {loading ? <Loading/> :
+                <div>
+                  {playerInfo.id &&
+                    <div>
+                      <h2>SUMMONER'S INFO</h2> 
+                      <PlayerDisplay
+                        summonerName={playerInfo.name}
+                        summonerLevel={playerInfo.summonerLevel}
+                        summonerIconId={playerInfo.profileIconId} />
+                      <h2>MAESTRY RANK</h2>
+                      <div className="CardTable">
+                        {allMasteries.map((mastery, i) =>
+                            <Card
+                              key={i}
+                              championsInfo={championsInfo}
+                              idChampion={mastery.championId}
+                              maestryLevel={mastery.championLevel}
+                              championPoints={mastery.championPoints} />)
+                        }
+                      </div>
+                    </div>
+                  }
+                </div>
+              }
             </div>
           }
-        </div>
-      }
-    </div>
+          path='/'
+        />
+        <Route element={<ChampionInfoCard championsInfo={championsInfo}/>} path='/:id'/>
+      </Switch>
+    </Router>
   )
 };
 
