@@ -1,29 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './Card.css'
 
 interface CardProps {
     maestryLevel: number;
     idChampion: number;
     championPoints: number;
+    championInfo: championInfoProps[];
 };
 
 interface championInfoProps {
     key: number;
     name: string; 
     id: number;
-}
+  }
 
-const championInfoLink = 'https://ddragon.leagueoflegends.com/cdn/12.16.1/data/pt_BR/champion.json'
 const championImgLink = 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/'
 
-const Card: React.FC<CardProps> = ({ maestryLevel, idChampion, championPoints}) => {
-    const [championInfo, setChampionInfo] = useState<championInfoProps[]>([])
-
-    const getChampionInfo = async () => {
-        const res = await fetch(`${championInfoLink}`)
-        const data = await res.json()
-        setChampionInfo(Object.values(data.data))
-    }
+const Card: React.FC<CardProps> = ({ championInfo, maestryLevel, idChampion, championPoints}) => {
 
     const getChampionName = (idChampion: number) => {
         for (var i = 0; i < championInfo.length; i++) {
@@ -40,10 +33,6 @@ const Card: React.FC<CardProps> = ({ maestryLevel, idChampion, championPoints}) 
         }
         return '';
     }
-
-    useEffect(() => {
-        getChampionInfo()
-    }, [])
 
     return (
         <div className='CardContainer'>

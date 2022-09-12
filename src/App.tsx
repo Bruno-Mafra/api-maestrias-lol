@@ -7,14 +7,9 @@ import Card from './components/Card'
 
 import './App.css'
 
-const apiKey = 'RGAPI-a4b38029-1eb5-482f-a783-eb9048ba91ab'
+const championInfoLink = 'https://ddragon.leagueoflegends.com/cdn/12.16.1/data/pt_BR/champion.json'
+const apiKey = 'RGAPI-ecd11e2e-e66c-427b-a360-de9541fc5df4'
 const lolLink = 'https://br1.api.riotgames.com/lol/'
-
-type allMasteriesProps = {
-  championId: number
-  championLevel: number 
-  championPoints: number
-}
 
 type playerInfoProps = {
   id: string
@@ -23,8 +18,21 @@ type playerInfoProps = {
   profileIconId: number
 }
 
+type allMasteriesProps = {
+  championId: number
+  championLevel: number 
+  championPoints: number
+}
+
+interface championInfoProps {
+  key: number;
+  name: string; 
+  id: number;
+}
+
 function App() {
   const [allMasteries, setAllMasteries] = useState<allMasteriesProps[]>([])
+  const [championInfo, setChampionInfo] = useState<championInfoProps[]>([])
   const [playerInfo, setPlayerInfo] = useState<playerInfoProps>({id: "", name: "", summonerLevel: 0, profileIconId: 0})
   const [playerNickname, setPlayerNickname] = useState<string>()
   const [notFound, setNotFound] = useState<boolean>(false)
@@ -59,6 +67,12 @@ function App() {
       }
   }
   
+  const getChampionInfo = async () => {
+    const res = await fetch(`${championInfoLink}`)
+    const data = await res.json()
+    setChampionInfo(Object.values(data.data))
+  }
+
   useEffect(() => {
     if (playerInfo.id) {
       getAllMasteries()
@@ -71,6 +85,10 @@ function App() {
       setLoading(true)
     }
   }, [playerNickname])
+
+  useEffect(() => {
+    getChampionInfo()
+  }, [])
 
   return (
     <div className="App">
@@ -91,6 +109,7 @@ function App() {
                 {allMasteries.map((mastery, i) =>
                   <Card
                     key={i}
+                    championInfo={championInfo}
                     idChampion={mastery.championId}
                     maestryLevel={mastery.championLevel}
                     championPoints={mastery.championPoints} />)
