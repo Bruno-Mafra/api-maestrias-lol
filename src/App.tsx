@@ -32,6 +32,8 @@ interface championsInfoProps {
   key: number;
   name: string; 
   id: string;
+  title: string;
+  blurb: string;
 }
 
 function App() {
