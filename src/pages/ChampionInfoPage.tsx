@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import { Link } from 'react-router-dom'
+
 import './ChampionInfoPage.css'
 
 interface championInfoProps {
@@ -28,6 +30,11 @@ const ChampionInfoPage: React.FC<{}> = () => {
 
   return (
     <div>
+      <div className="backButton">
+        <Link to={'/'}>
+          <span>Voltar para a Home</span>
+        </Link>
+      </div>
       <p>{championInfo.name}</p>
       <p>{championInfo.title}</p>
       <p>{championInfo.lore}</p>
