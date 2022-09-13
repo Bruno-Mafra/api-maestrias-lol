@@ -62,7 +62,7 @@ const Home: React.FC<{}> = () => {
       setAllMasteries([...data])
       setLoading(false)
       setNotFound(false)
-      window.sessionStorage.setItem('playerMasteryInfo', JSON.stringify(data));
+      window.sessionStorage.setItem('playerMasteryInfo', JSON.stringify([...data]));
     } catch (e) {
         setLoading(false)
         setNotFound(true)
@@ -74,6 +74,7 @@ const Home: React.FC<{}> = () => {
     const res = await fetch(`${championsInfoLink}`)
     const data = await res.json()
     setChampionsInfo(Object.values(data.data))
+    window.localStorage.setItem('championsInfo', JSON.stringify(Object.values(data.data)));
   }
 
   useEffect(() => {
@@ -90,10 +91,15 @@ const Home: React.FC<{}> = () => {
   }, [playerNickname])
 
   useEffect(() => {
-    //Na vdd isso só deve ser usado quando voltar pra pagina anterior, o refresh deve continuar apagando tudo
+    //Na vdd isso só deve ser usado quando voltar pra pagina anterior, o refresh deveria continuar apagando tudo
     setPlayerInfo(JSON.parse(window.sessionStorage.getItem('playerInfo') || '{}'))
     setAllMasteries(JSON.parse(window.sessionStorage.getItem('playerMasteryInfo') || '{}'))
-    getChampionsInfo()
+    //A mudança no PlayerInfo esta forçando a requisição das maestrias, então não esta servindo de nada a segunda linha
+
+    if (window.localStorage.getItem('championsInfo') === null)
+      getChampionsInfo()
+    else
+      setChampionsInfo(JSON.parse(window.localStorage.getItem('championsInfo')!))
   }, [])
 
   return (
