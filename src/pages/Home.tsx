@@ -45,6 +45,7 @@ const Home: React.FC<{}> = () => {
       const data = await res.json()
       setPlayerInfo(data)
       setNotFound(false)
+      window.sessionStorage.setItem('playerInfo', JSON.stringify(data));
     } catch (e) {
         setPlayerInfo({id: "", name: '', summonerLevel: 0, profileIconId: 0})
         setAllMasteries([])
@@ -61,6 +62,7 @@ const Home: React.FC<{}> = () => {
       setAllMasteries([...data])
       setLoading(false)
       setNotFound(false)
+      window.sessionStorage.setItem('playerMasteryInfo', JSON.stringify(data));
     } catch (e) {
         setLoading(false)
         setNotFound(true)
@@ -88,6 +90,9 @@ const Home: React.FC<{}> = () => {
   }, [playerNickname])
 
   useEffect(() => {
+    //Na vdd isso só deve ser usado quando voltar pra pagina anterior, o refresh deve continuar apagando tudo
+    setPlayerInfo(JSON.parse(window.sessionStorage.getItem('playerInfo') || '{}'))
+    setAllMasteries(JSON.parse(window.sessionStorage.getItem('playerMasteryInfo') || '{}'))
     getChampionsInfo()
   }, [])
 
