@@ -16,7 +16,7 @@ interface championInfoProps {
     id: string;
   }
 
-const championImgLink = 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/'
+const championImgLink = 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/'
 
 const Card: React.FC<CardProps> = ({ championsInfo, maestryLevel, idChampion, championPoints}) => {
 

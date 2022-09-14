@@ -28,9 +28,9 @@ const ChampionInfoPage: React.FC<{}> = () => {
 
   useEffect(() => {
     if (window.sessionStorage.getItem(`${slug}Info`) === null)
-    getChampionInfo()
+      getChampionInfo()
     else
-    setChampionInfo(JSON.parse(window.sessionStorage.getItem(`${slug}Info`)!))
+      setChampionInfo(JSON.parse(window.sessionStorage.getItem(`${slug}Info`)!))
   }, [])
 
   return (
@@ -40,9 +40,12 @@ const ChampionInfoPage: React.FC<{}> = () => {
           Voltar para a Home
         </button>
       </div>
-      <p>{championInfo.name}</p>
-      <p>{championInfo.title}</p>
-      <p>{championInfo.lore}</p>
+      <div className="infoContainer">
+        <h1>{championInfo.name}</h1>
+        <h2>{championInfo.title}</h2>
+        <img src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championInfo.id}_0.jpg`}/>
+        <p>{championInfo.lore}</p>
+      </div>
     </div>
   )
 }
