@@ -3,3 +3,42 @@
   align-items: center;
   flex-direction: column;
 }
+
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid black;
+}
+
+.imgDiv {
+  border-radius: 5px;
+}
+
+.backButton {
+  color: rgb(187, 139, 6);
+  background-color: transparent;
+  cursor:pointer;
+  border: none;
+  text-decoration: underline rgb(187, 139, 6);
+  margin-bottom: 10px;
+}
+
+.backButton:hover {
+  color: rgb(231, 171, 4);
+}
+
+.name {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.title {
+  font-style: italic;
+  font-size: 20px;
+  margin: 0px 0px 10px 0px;
+}
+
+.tags {
+  font-size: 16px;
+  margin: 10px 0px 0px 0px;
+}

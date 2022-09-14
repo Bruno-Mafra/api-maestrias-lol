@@ -35,6 +35,7 @@ interface championsInfoProps {
 
 const Home: React.FC<{}> = () => {
   window.history.replaceState({}, '') // reseta o estado se a pagina for atualizada
+  
   const [allMasteries, setAllMasteries] = useState<allMasteriesProps[]>([])
   const [championsInfo, setChampionsInfo] = useState<championsInfoProps[]>([])
   const [playerInfo, setPlayerInfo] = useState<playerInfoProps>({id: "", name: "", summonerLevel: 0, profileIconId: 0})
@@ -99,6 +100,7 @@ const Home: React.FC<{}> = () => {
     if(location.state === 'fromChampion') { //verifica se acabou de sair da outra pagina
       setPlayerInfo(JSON.parse(window.sessionStorage.getItem('playerInfo') || '{}'))
       setAllMasteries(JSON.parse(window.sessionStorage.getItem('playerMasteryInfo') || '{}'))
+      location.state = null
     }
 
     if (window.localStorage.getItem('championsInfo') === null)

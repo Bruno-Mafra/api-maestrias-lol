@@ -47,7 +47,7 @@ const BuscarPlayer: React.FC<BuscarPlayerProps> = ({ setNickname }) => {
             onKeyDown={handleEnterKeyPress}
             placeholder="Digite o nome de invocador..."
             />
-            <button onClick={searchPlayer}>Buscar</button>
+            <button className='inputButton' onClick={searchPlayer}>Buscar</button>
         </div>
     )
 }

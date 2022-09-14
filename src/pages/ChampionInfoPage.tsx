@@ -10,11 +10,12 @@ interface championInfoProps {
   id: string;
   title: string;
   lore: string;
+  tags: string[];
 }
 
 const ChampionInfoPage: React.FC<{}> = () => {
 
-  const [championInfo, setChampionInfo] = useState<championInfoProps>({name: '', id: '', title: '', lore: ''})
+  const [championInfo, setChampionInfo] = useState<championInfoProps>({name: '', id: '', title: ' ', lore: '', tags: []})
 
   const navigate = useNavigate();
   const slug: string = useParams().id || ''
@@ -35,16 +36,17 @@ const ChampionInfoPage: React.FC<{}> = () => {
 
   return (
     <div>
-      <div className="backButton">
-        <button onClick={() => navigate("/", { state: 'fromChampion' })}>
+      <div className="buttonDiv">
+        <button className="backButton" onClick={() => navigate("/", { state: 'fromChampion' })}>
           Voltar para a Home
         </button>
       </div>
       <div className="infoContainer">
-        <h1>{championInfo.name}</h1>
-        <h2>{championInfo.title}</h2>
-        <img src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championInfo.id}_0.jpg`}/>
-        <p>{championInfo.lore}</p>
+        <h1 className="name">{championInfo.name}</h1>
+        <h2 className="title">{`${championInfo.title[0].toUpperCase()}${championInfo.title.slice(1)}`}</h2>
+        <img className="imgDiv" src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championInfo.id}_0.jpg`}/>
+        <h3 className="tags">{championInfo.tags[0]}</h3>
+        <p className="lore">{championInfo.lore}</p>
       </div>
     </div>
   )

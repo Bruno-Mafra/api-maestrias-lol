@@ -15,7 +15,7 @@ input {
 
 }
 
-button {
+.inputButton {
     background-color: rgb(187, 139, 6);
     border: 2px solid white;
     border-radius: 5px;
@@ -24,7 +24,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.inputButton:hover {
     background-color: rgb(231, 171, 4);
 }
 
