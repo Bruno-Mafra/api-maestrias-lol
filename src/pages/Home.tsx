@@ -10,7 +10,7 @@ import Card from '../components/Card'
 import logo from '../imgs/homeThumb.webp';
 import './Home.css'
 
-const championsInfoLink = 'https://ddragon.leagueoflegends.com/cdn/12.16.1/data/pt_BR/champion.json'
+const championsInfoLink = 'https://ddragon.leagueoflegends.com/cdn/12.17.1/data/pt_BR/champion.json'
 const apiKey = 'RGAPI-e618d991-f357-409e-8787-bbed2c5dd05f'
 const lolLink = 'https://br1.api.riotgames.com/lol/'
 

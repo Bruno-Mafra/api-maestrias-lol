@@ -20,7 +20,7 @@ const ChampionInfoPage: React.FC<{}> = () => {
   const slug: string = useParams().id || ''
 
   const getChampionInfo = async () => {
-    const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/12.16.1/data/pt_BR/champion/${slug}.json`)
+    const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/12.17.1/data/pt_BR/champion/${slug}.json`)
     const data = await res.json()
     setChampionInfo(data.data[slug])
     window.sessionStorage.setItem(`${slug}Info`, JSON.stringify(data.data[slug]));
