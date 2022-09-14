@@ -1,35 +1,51 @@
 .CardContainer {
     display: flex;
     flex-direction: column;
+
+    position:relative; 
     text-align: center;
-    
-    background-color: rgb(156, 121, 25);
+    color: white;
+
     border: 2px solid white;
     border-radius: 5px;
 
-    width: 60%;
-    /* height: 50%; */
-
     margin: 25px auto;
+    width: 60%;
 
-    color: black;
-
-    position:relative; 
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: 108.64%;
 }
 
 .CardContainer:hover {
-    background-color: rgb(231, 171, 4);
+    border: 2px solid rgb(231, 171, 4);
+    color: orange;
 }
 
-@media (max-width: 600px) {
-    .CardContainer {
-        width: 98% !important;
-    }
+.CardContainer:hover .CardTitle{
+    border-bottom: 2px solid rgb(231, 171, 4);
+}
+
+.CardContainer:hover .CardInfo{
+    border-top: 2px solid rgb(231, 171, 4);
+    border-bottom: 2px solid rgb(231, 171, 4);
 }
 
 @media (max-width: 800px) {
     .CardContainer {
-        width: 73%;
+        width: 80%;
+        padding-top: 145%;
+    }
+}
+
+@media (max-width: 600px) {
+    .CardContainer {
+        width: 98%;
+        padding-top: 177%;
+    }
+
+    .CardInfo {
+        margin-top: 110% !important;
     }
 }
 
@@ -42,12 +58,16 @@ img {
 }
 
 .CardInfo {
+    background-color:rgba(0, 0, 0, 0.8);
     border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    margin-top: 115%;
 }
 
 .CardTitle {
+    background-color:rgba(0, 0, 0, 0.8);
     border-bottom: 2px solid white;
-    margin: 0px;
+    margin-top: -180%;
 }
 
 .link {
@@ -56,6 +76,5 @@ img {
     height:100%;
     top:0;
     left: 0;
-  
     z-index: 1;  
 }

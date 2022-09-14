@@ -36,13 +36,13 @@ const Card: React.FC<CardProps> = ({ championsInfo, maestryLevel, idChampion, ch
     }, [])
 
     return (
-        <div className='CardContainer'>
+        <div 
+        className='CardContainer' 
+        style={{backgroundImage:`url(${championImgLink}${championInfo.id}_0.jpg)`}}
+        >
             <h2 className='CardTitle'>{championInfo.name}</h2>
-            <div className='ImgContainer'>
-                <img src={`${championImgLink}${championInfo.id}_0.jpg`} alt={'Imagem'} />
-            </div>
             <div className='CardInfo'>
-                <p><strong>Nível de Mestria:</strong> {maestryLevel}</p>
+                <p><strong>Nível de Maestria:</strong> {maestryLevel}</p>
                 <p><strong>Pontos de Maestria:</strong> {championPoints}</p>
             </div>
             <Link to={'/' + championInfo.id}>

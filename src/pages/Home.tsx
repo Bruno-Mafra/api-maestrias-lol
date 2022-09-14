@@ -100,7 +100,6 @@ const Home: React.FC<{}> = () => {
     if(location.state === 'fromChampion') { //verifica se acabou de sair da outra pagina
       setPlayerInfo(JSON.parse(window.sessionStorage.getItem('playerInfo') || '{}'))
       setAllMasteries(JSON.parse(window.sessionStorage.getItem('playerMasteryInfo') || '{}'))
-      location.state = null
     }
 
     if (window.localStorage.getItem('championsInfo') === null)
