@@ -1,5 +1,6 @@
 import './Card.css'
 
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 interface CardProps {
@@ -19,33 +20,32 @@ const championImgLink = 'https://ddragon.leagueoflegends.com/cdn/img/champion/sp
 
 const Card: React.FC<CardProps> = ({ championsInfo, maestryLevel, idChampion, championPoints}) => {
 
-    const getChampionName = (idChampion: number) => {
+    const [championInfo, setChampionInfo] = useState<championInfoProps>({key:0, name:'', id:''})
+
+    const getChampionInfo = () => {
         for (var i = 0; i < championsInfo.length; i++) {
-            if (championsInfo[i].key == idChampion)
-                return championsInfo[i].name;
+            if (championsInfo[i].key == idChampion) {
+                setChampionInfo(championsInfo[i])
+                break
+            }
         }
-        return 'Desconhecido*';
     }
 
-    const getChampionId = (idChampion: number) => {
-        for (var i = 0; i < championsInfo.length; i++) {
-            if (championsInfo[i].key == idChampion)
-                return championsInfo[i].id;
-        }
-        return '';
-    }
+    useEffect(() => {
+        getChampionInfo()
+    }, [])
 
     return (
         <div className='CardContainer'>
-            <h2 className='CardTitle'>{getChampionName(idChampion)}</h2>
+            <h2 className='CardTitle'>{championInfo.name}</h2>
             <div className='ImgContainer'>
-                <img src={`${championImgLink}${getChampionId(idChampion)}_0.jpg`} alt={'Imagem'} />
+                <img src={`${championImgLink}${championInfo.id}_0.jpg`} alt={'Imagem'} />
             </div>
             <div className='CardInfo'>
                 <p><strong>Nível de Mestria:</strong> {maestryLevel}</p>
                 <p><strong>Pontos de Maestria:</strong> {championPoints}</p>
             </div>
-            <Link to={'/' + getChampionId(idChampion)}>
+            <Link to={'/' + championInfo.id}>
                 <span className='link'></span>
             </Link>
         </div>
@@ -53,5 +53,3 @@ const Card: React.FC<CardProps> = ({ championsInfo, maestryLevel, idChampion, ch
 };
 
 export default Card;
-
-//melhorar a questão do uso do for que esta sendo realizado duas vezes com o getChampionId, tem que ficar armazenado a info em algum canto
