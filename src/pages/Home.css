@@ -3,6 +3,27 @@
   margin: 0px auto;
 }
 
+.logoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  max-width: 25%;
+}
+
+@media (max-width: 800px) {
+  .logo {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo {
+    max-width: 80%;
+  }
+}
+
 h1 {
   text-align: center;
 }
@@ -19,21 +40,17 @@ h2 {
 }
 
 @media (max-width: 800px) {
-
   .CardTable {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-
 }
 
 @media (max-width: 600px) {
-
   .CardTable {
     display: grid;
     grid-template-columns: 1fr !important;
   }
-
 }
 
 .Home {
