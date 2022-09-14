@@ -1,15 +1,17 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import {useLocation} from 'react-router-dom';
 
 import BuscarPlayer from '../components/BuscarPlayer'
 import PlayerDisplay from '../components/PlayerDisplay'
 import Loading from '../components/Loading'
 import Card from '../components/Card'
 
+import logo from '../imgs/homeThumb.webp';
 import './Home.css'
 
 const championsInfoLink = 'https://ddragon.leagueoflegends.com/cdn/12.16.1/data/pt_BR/champion.json'
-const apiKey = 'RGAPI-ecd11e2e-e66c-427b-a360-de9541fc5df4'
+const apiKey = 'RGAPI-e618d991-f357-409e-8787-bbed2c5dd05f'
 const lolLink = 'https://br1.api.riotgames.com/lol/'
 
 type playerInfoProps = {
@@ -32,12 +34,15 @@ interface championsInfoProps {
 }
 
 const Home: React.FC<{}> = () => {
+  window.history.replaceState({}, '') // reseta o estado se a pagina for atualizada
   const [allMasteries, setAllMasteries] = useState<allMasteriesProps[]>([])
   const [championsInfo, setChampionsInfo] = useState<championsInfoProps[]>([])
   const [playerInfo, setPlayerInfo] = useState<playerInfoProps>({id: "", name: "", summonerLevel: 0, profileIconId: 0})
   const [playerNickname, setPlayerNickname] = useState<string>()
   const [notFound, setNotFound] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false)
+
+  const location = useLocation()
 
   const getPlayerEncryptedId = async () => {
     try {
@@ -78,7 +83,7 @@ const Home: React.FC<{}> = () => {
   }
 
   useEffect(() => {
-    if (playerInfo.id) {
+    if (playerInfo.id && playerNickname) { // assim só faz a requisição quando vem do input
       getAllMasteries()
     }
   }, [playerInfo])
@@ -91,10 +96,10 @@ const Home: React.FC<{}> = () => {
   }, [playerNickname])
 
   useEffect(() => {
-    //Na vdd isso só deve ser usado quando voltar pra pagina anterior, o refresh deveria continuar apagando tudo
-    setPlayerInfo(JSON.parse(window.sessionStorage.getItem('playerInfo') || '{}'))
-    setAllMasteries(JSON.parse(window.sessionStorage.getItem('playerMasteryInfo') || '{}'))
-    //A mudança no PlayerInfo esta forçando a requisição das maestrias, então não esta servindo de nada a segunda linha
+    if(location.state === 'fromChampion') { //verifica se acabou de sair da outra pagina
+      setPlayerInfo(JSON.parse(window.sessionStorage.getItem('playerInfo') || '{}'))
+      setAllMasteries(JSON.parse(window.sessionStorage.getItem('playerMasteryInfo') || '{}'))
+    }
 
     if (window.localStorage.getItem('championsInfo') === null)
       getChampionsInfo()
@@ -104,6 +109,9 @@ const Home: React.FC<{}> = () => {
 
   return (
     <div className="Home">
+      <div className='logoContainer'>
+        <img className='logo' src={logo}></img>
+      </div>
       <h1>PLAYER MAESTRY LEVEL</h1>
       <BuscarPlayer setNickname={setPlayerNickname} />
       <span className={notFound ? undefined : 'NotFound'}>Esse nome de invocador não foi encontrado!</span>
