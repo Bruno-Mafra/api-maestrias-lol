@@ -12,13 +12,13 @@ const iconLink = 'https://ddragon.leagueoflegends.com/cdn/12.17.1/img/profileico
 const PlayerDisplay: React.FC<PlayerDisplayProps> = ({ summonerName, summonerLevel, summonerIconId }) => {
   return (
     <div className='PDContainer'>
-      <div className='PDImgContainer'>
-        <img className='PDImg' src={`${iconLink}${summonerIconId}.png`}/>
+      <div 
+        className='PDImgContainer'
+        style={{backgroundImage:`url(${iconLink}${summonerIconId}.png)`}}>
       </div>
-      <div className='Info'>
-        <p> <strong>Nome de invocador:</strong> {summonerName}</p>
-        <p><strong>Nível:</strong> {summonerLevel}</p>
-      </div>
+      <img className='PDImg' src={`${iconLink}${summonerIconId}.png`}/>
+      <p className='Info summonerName'><strong>Invocador: </strong>{summonerName}</p>
+      <p className='Info level'><strong>Nível: </strong> {summonerLevel}</p>
     </div>
   )
 }

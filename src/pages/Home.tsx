@@ -11,7 +11,7 @@ import logo from '../imgs/homeThumb.webp';
 import './Home.css'
 
 const championsInfoLink = 'https://ddragon.leagueoflegends.com/cdn/12.17.1/data/pt_BR/champion.json'
-const apiKey = 'RGAPI-e618d991-f357-409e-8787-bbed2c5dd05f'
+const apiKey = 'RGAPI-fc3189cd-edaf-4fad-92af-a5d7edb99476'
 const lolLink = 'https://br1.api.riotgames.com/lol/'
 
 type playerInfoProps = {
@@ -120,13 +120,13 @@ const Home: React.FC<{}> = () => {
         <div>
           {playerInfo.id &&
             <div>
-              <h2>SUMMONER'S INFO</h2> 
+              <h2 className='subtitle'>SUMMONER'S INFO</h2> 
               <PlayerDisplay
                 summonerName={playerInfo.name}
                 summonerLevel={playerInfo.summonerLevel}
                 summonerIconId={playerInfo.profileIconId} />
-              <h2>MAESTRY RANK</h2>
-              <div className="CardTable">
+              <h2 className='subtitle'>MAESTRY RANK</h2>
+              <div className="cardTable">
                 {allMasteries.map((mastery, i) =>
                     <Card
                       key={i}

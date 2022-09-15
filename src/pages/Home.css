@@ -29,26 +29,26 @@ h1 {
   text-align: center;
 }
 
-h2 {
+.subtitle {
   margin-top: 50px;
   margin-bottom: 0px;
   text-align: center;
 }
 
-.CardTable {
+.cardTable {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
 @media (max-width: 800px) {
-  .CardTable {
+  .cardTable {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 600px) {
-  .CardTable {
+  .cardTable {
     display: grid;
     grid-template-columns: 1fr !important;
   }

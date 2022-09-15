@@ -1,8 +1,8 @@
-.CardContainer {
+.cardContainer {
     display: flex;
     flex-direction: column;
+    position: relative; 
 
-    position:relative; 
     text-align: center;
     color: white;
 
@@ -10,71 +10,71 @@
     border-radius: 5px;
 
     margin: 25px auto;
-    width: 60%;
-
-    background-size: contain;
-    background-repeat: no-repeat;
     padding-top: 108.64%;
+    width: 60%;
 }
 
-.CardContainer:hover {
+.cardContainer:hover {
     border: 2px solid rgb(231, 171, 4);
     color: orange;
 }
 
-.CardContainer:hover .CardTitle{
+.cardContainer:hover .cardTitle{
     border-bottom: 3px solid rgb(231, 171, 4);
 }
 
-.CardContainer:hover .CardInfo{
+.cardContainer:hover .cardInfo{
     border-top: 2px solid rgb(231, 171, 4);
     border-bottom: 2px solid rgb(231, 171, 4);
 }
 
 @media (max-width: 800px) {
-    .CardContainer {
+    .cardContainer {
         width: 80%;
         padding-top: 145%;
     }
 }
 
 @media (max-width: 600px) {
-    .CardContainer {
+    .cardContainer {
         width: 98%;
         padding-top: 177%;
     }
-
-    .CardInfo {
-        margin-top: 110% !important;
-    }
 }
 
-.ImgContainer {
-    display: flex;
-}
-
-img {
+.backImg {
+    position: absolute;
     max-width: 100%;
+    top: 0;
+    z-index: -1;
 }
 
-.CardInfo {
+.cardInfo {
+    position: absolute;
     background-color:rgba(0, 0, 0, 0.7);
     border-top: 2px solid white;
     border-bottom: 2px solid white;
-    margin-top: 115%;
+
+    margin-top: 0px;
+    width: 100%;
+    bottom: 10%;
 }
 
-.CardTitle {
+.cardTitle {
+    position: absolute;
     background-color:rgba(0, 0, 0, 0.7);
     border-bottom: 3px solid white;
-    margin-top: -180%;
+
+    margin-top: 0px;
+    width: 100%;
+    top: 0;
 }
 
 .link {
-    position:absolute; 
-    width:100%;
-    height:100%;
-    top:0;
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    top: 0;
     left: 0;
     z-index: 1;  
 }

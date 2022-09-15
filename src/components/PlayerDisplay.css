@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
 
+  position: relative;
+
   margin: 0 auto;
   margin-top: 25px;
-  max-width: 30%;
+  max-width: 25%; /* reduz o tamanho total*/
 
-  background-color: rgb(156, 121, 25);
   border: 2px solid white;
   border-radius: 5px;
-  
 }
 
 @media (max-width: 600px) {
@@ -24,20 +24,43 @@
   }
 }
 
-.PDImg {
-  max-width: 50%;
-  border-radius: 10%
+.PDImgContainer {
+  background-size: contain;
+  padding-top: 100%;
+  opacity: 40%;
 }
 
-.PDImgContainer {
-  justify-content: center;
-  text-align: center;
-  margin-top: 20px;
+.PDImg {
+  position: absolute;
 
+  border-radius: 50%;
+
+  width:100%;
+  top: 0;
+  z-index: 1;
 }
 
 .Info {
-  color: black;
-  align-self: center;
+  position: absolute;
+  width:100%;
+  z-index: 1;
+
+  color: white;
   text-align: center;
+  background-color:rgba(0, 0, 0, 0.6);
+
+  margin: 0;
+  padding-top: 1%;
+  height: 9%;
+}
+
+.summonerName {
+  top: 0;
+  border-bottom: 2px solid white;
+
+}
+
+.level {
+  bottom: 0;
+  border-top: 2px solid white;
 }
