@@ -1,0 +1,79 @@
+.sliderDiv{
+  background-color: transparent;
+}
+
+.slider{
+  background-color: transparent;
+  margin: 0 auto;
+
+  width: 100%;     
+  height: auto;
+  object-fit: cover;
+}
+
+.skins{
+  background-color: transparent;
+}
+
+.skinImg {
+  border-radius: 1%;
+  width: 100%;     
+  height: auto;
+  object-fit: cover;
+
+  border: none;
+}
+
+.skinName {
+  margin-top: 10px;
+  color: orange;
+}
+
+.slick-track .slick-slide {
+  display: flex;
+  height: auto;
+  justify-content: center;
+}
+
+.slick-dots li.slick-active button:before {
+  color:orange !important;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 60px;
+  opacity: 0.5;
+  color: orange;
+}
+
+.slick-next { 
+  left: 97.5%;
+}
+
+.slick-prev { 
+  z-index: 1;
+}
+
+/* para remover do mobile/tablet*/
+/* .slick-dots {
+  display: none !important;
+}
+.slick-arrow {
+  display: none !important;
+}
+
+.slick-next {  /*utilizar esses caras para movimentar a posição da seta*/
+  /* left: 97.5%;
+}
+
+.slick-prev { 
+  z-index: 1;
+} */
+
+/*remover só os pontos no mobile*/
+/*
+margin-top: 6%; //tablet
+margin-top: 4%; //mobile */

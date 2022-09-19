@@ -7,7 +7,16 @@
 .buttonDiv {
   display: flex;
   justify-content: center;
+}
+
+.Bottom {
+  border-top: 1px solid black;
+  margin-top: 10px;
+}
+
+.Top {
   border-bottom: 1px solid black;
+  margin-bottom: 10px;
 }
 
 .imgDiv {
@@ -20,7 +29,7 @@
   cursor:pointer;
   border: none;
   text-decoration: underline rgb(187, 139, 6);
-  margin-bottom: 10px;
+
 }
 
 .backButton:hover {
@@ -32,13 +41,32 @@
   margin-bottom: 15px;
 }
 
+.lore {
+  text-align: justify;
+  text-justify: inter-word;
+}
 .title {
+  color: orange;
   font-style: italic;
   font-size: 20px;
   margin: 0px 0px 10px 0px;
 }
 
 .tags {
-  font-size: 16px;
-  margin: 10px 0px 0px 0px;
+  display: flex;
+  justify-content: center;
+
+  margin-top: 10px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.bio {
+  font-size: 30px;
+  margin: 25px 0px 0px 0px;
+}
+
+.infoBaixo {
+  border-top: 1px solid black;
+  margin-top: 3%;
 }

@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 
 import { useNavigate } from 'react-router-dom';
 
+import SkinsSlider from "../components/SkinsSlider";
+
 import './ChampionInfoPage.css'
 
 interface championInfoProps {
@@ -11,11 +13,17 @@ interface championInfoProps {
   title: string;
   lore: string;
   tags: string[];
+  skins: skin[];
+}
+interface skin {
+  name: string
+  chromas: false
+  num: number
 }
 
 const ChampionInfoPage: React.FC<{}> = () => {
 
-  const [championInfo, setChampionInfo] = useState<championInfoProps>({name: '', id: '', title: ' ', lore: '', tags: []})
+  const [championInfo, setChampionInfo] = useState<championInfoProps>({name: '', id: '', title: ' ', lore: '', tags: [], skins: []})
 
   const navigate = useNavigate();
   const slug: string = useParams().id || ''
@@ -36,17 +44,25 @@ const ChampionInfoPage: React.FC<{}> = () => {
 
   return (
     <div>
-      <div className="buttonDiv">
-        <button className="backButton" onClick={() => navigate("/", { state: 'fromChampion' })}>
+      <div className="buttonDiv Top">
+        <button className="backButton Top" onClick={() => navigate("/", { state: 'fromChampion' })}>
           Voltar para a Home
         </button>
       </div>
       <div className="infoContainer">
         <h1 className="name">{championInfo.name}</h1>
         <h2 className="title">{`${championInfo.title[0].toUpperCase()}${championInfo.title.slice(1)}`}</h2>
-        <img className="imgDiv" src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championInfo.id}_0.jpg`}/>
-        <h3 className="tags">{championInfo.tags[0]}</h3>
+      </div>
+      <SkinsSlider slug={slug} skins={championInfo.skins}/>
+      <div className="infoContainer infoBaixo">
+        <h3 className="bio">{'Biografia'}</h3>
         <p className="lore">{championInfo.lore}</p>
+        <h4 className="tags">{'Classe: ' + championInfo.tags[0]}</h4>
+      </div>
+      <div className="buttonDiv Bottom">
+        <button className="backButton Bottom" onClick={() => navigate("/", { state: 'fromChampion' })}>
+          Voltar para a Home
+        </button>
       </div>
     </div>
   )
