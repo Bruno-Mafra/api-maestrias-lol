@@ -57,6 +57,29 @@
   z-index: 1;
 }
 
+@media (max-width: 800px) {
+  .infoBaixo {
+    margin-top: 6% !important;
+  }
+
+  .slick-next {
+    display: none;
+  }
+
+  .slick-arrow {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .infoBaixo {
+    margin-top: 17% !important;
+  }
+
+  .slick-dots {
+    bottom: -22% !important;
+  }
+}
 /* para remover do mobile/tablet*/
 /* .slick-dots {
   display: none !important;
