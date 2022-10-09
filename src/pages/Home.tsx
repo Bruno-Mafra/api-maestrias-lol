@@ -11,7 +11,7 @@ import logo from '../imgs/homeThumb.webp';
 import './Home.css'
 
 const championsInfoLink = 'https://ddragon.leagueoflegends.com/cdn/12.17.1/data/pt_BR/champion.json'
-const apiKey = 'RGAPI-09a36f0c-bfff-425c-908e-ce1b7f4e9459'
+const apiKey = 'RGAPI-0a8325c0-d1e0-48be-b7da-baa2a1742618'
 const lolLink = 'https://br1.api.riotgames.com/lol/'
 
 type playerInfoProps = {

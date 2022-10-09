@@ -12,7 +12,7 @@ input {
     border: 2px solid white;
     border-radius: 5px;
     height: 35px;
-
+    width: 100%;
 }
 
 .inputButton {
@@ -35,4 +35,5 @@ input {
 .InputEmpty:focus {
     border-radius: 3px;
     outline: 2px solid red;
+    
 }
